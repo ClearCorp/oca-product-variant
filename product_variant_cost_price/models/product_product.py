@@ -55,6 +55,12 @@ class ProductProduct(models.Model):
 
     @api.model
     def create(self, values):
+        if 'product_tmpl_id' in values and 'standard_price' not in values:
+            template = self.env['product.template'].browse(
+                values.get('product_tmpl_id'))
+            values.update({
+                'standard_price': template.standard_price,
+            })
         product = super(ProductProduct, self).create(values)
         self._set_standard_price(product, values.get('standard_price', 0.0))
         return product
@@ -64,6 +70,14 @@ class ProductProduct(models.Model):
         if 'standard_price' in values:
             for product in self:
                 product._set_standard_price(product, values['standard_price'])
+        if (values.get('cost_method', False) and not
+                self.env.context.get('force_not_load', False)):
+            cost_method = values.get('cost_method', False)
+            templates = self.mapped('product_tmpl_id').filtered(
+                lambda x: len(x.product_variant_ids) == 1 and
+                x.cost_method != cost_method)
+            templates.with_context(force_not_load=True).write(
+                {'cost_method': cost_method})
         return super(ProductProduct, self).write(values)
 
 
