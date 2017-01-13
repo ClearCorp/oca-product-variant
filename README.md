@@ -13,8 +13,11 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
+[product_variant_available_in_pos](product_variant_available_in_pos/) | 8.0.1.0.0 | Available In Pos in product level
 [product_variant_cost_price](product_variant_cost_price/) | 8.0.1.0.0 | Cost price by variant
 [product_variant_csv_import](product_variant_csv_import/) | 8.0.1.0.0 | Add menu entry to allow CSV import of templates with variants
+[product_variant_sale_price](product_variant_sale_price/) | 8.0.1.0.0 | Allows to write fixed prices in product variants
+[product_variant_search_by_attribute](product_variant_search_by_attribute/) | 8.0.1.0.0 | Allows searching inside the product variant attributes all attributes at once with multiple keywords
 [product_variant_supplierinfo](product_variant_supplierinfo/) | 8.0.1.0.0 | Supplier info to product variant scope
 [product_variant_weight](product_variant_weight/) | 8.0.1.0.0 | Weight data in product level
 
